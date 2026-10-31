@@ -1,0 +1,319 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: var(--font-plex-sans), "IBM Plex Sans", ui-sans-serif, sans-serif;
+  --font-mono: var(--font-plex), "IBM Plex Mono", ui-monospace, monospace;
+  --color-paper: #000000;
+  --color-ink: #f3f3f3;
+  --color-stamp: #ff2a2a;
+  --color-pass: #f3f3f3;
+  --color-amber: #ff2a2a;
+  --color-line: #2a2a2a;
+  --color-panel: #000000;
+  --color-muted: #8d8d8d;
+  --text-2xl: 1rem;
+  --text-3xl: 1rem;
+  --text-4xl: 1rem;
+  --text-5xl: 1rem;
+}
+
+html {
+  background: #000;
+  color-scheme: dark;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: #000;
+  color: #f3f3f3;
+  font-family: var(--font-sans);
+  font-size: 15px;
+  line-height: 1.65;
+}
+
+h1,
+h2,
+h3,
+.serif,
+.text-2xl,
+.text-3xl,
+.text-4xl,
+.text-5xl {
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0;
+  line-height: 1.5;
+}
+
+h1,
+.text-4xl,
+.text-5xl,
+.serif {
+  font-size: 1.35rem;
+  line-height: 1.25;
+}
+
+a {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: #ff2a2a;
+  text-underline-offset: 3px;
+}
+
+.mono {
+  font-family: var(--font-mono);
+  font-size: 0.92em;
+}
+
+.page {
+  width: 100%;
+  padding: 1.25rem 2rem 4rem;
+}
+
+.mast {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-areas:
+    "mark session"
+    "nav nav";
+  align-items: baseline;
+  row-gap: 0.85rem;
+}
+
+.wordmark {
+  grid-area: mark;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.nav {
+  grid-area: nav;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 1.35rem;
+}
+
+.session {
+  grid-area: session;
+  justify-self: end;
+  color: #8d8d8d;
+  white-space: nowrap;
+}
+
+.session form {
+  display: inline;
+  margin-left: 1rem;
+}
+
+.halftone {
+  display: flex;
+  justify-content: space-between;
+  height: 48px;
+  margin: 0 0 1.1rem;
+}
+
+.halftone span {
+  display: block;
+  width: 22%;
+  height: 100%;
+  background-image: radial-gradient(circle, #ff1a1a 0.85px, transparent 1.05px);
+  background-size: 3.5px 3.5px;
+}
+
+.halftone span:first-child {
+  mask-image: linear-gradient(90deg, transparent, #000 16%, #000 78%, transparent);
+}
+
+.halftone span:last-child {
+  mask-image: linear-gradient(270deg, transparent, #000 16%, #000 78%, transparent);
+}
+
+hr {
+  border: 0;
+  border-top: 1px solid #2a2a2a;
+  margin: 1.15rem 0;
+}
+
+.kicker {
+  color: #8d8d8d;
+  font-size: 1rem;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+
+.sheet {
+  background: transparent;
+  border: 0;
+}
+
+.sheet table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+.sheet th {
+  padding: 0.45rem 0.7rem 0.45rem 0;
+  border-bottom: 1px solid #3a3a3a;
+  color: #8d8d8d;
+  font-size: 0.95rem;
+  font-weight: 400;
+  letter-spacing: 0;
+  text-align: left;
+}
+
+.sheet td {
+  padding: 0.55rem 0.7rem 0.55rem 0;
+  border-bottom: 1px solid #1c1c1c;
+  vertical-align: top;
+}
+
+.sheet tr:last-child td {
+  border-bottom: 0;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  box-sizing: border-box;
+  border: 0;
+  border-bottom: 1px solid #3a3a3a;
+  border-radius: 0;
+  background: transparent;
+  color: inherit;
+  padding: 0.35rem 0;
+  font: inherit;
+}
+
+textarea {
+  min-height: 6.5rem;
+  resize: vertical;
+}
+
+input[type="checkbox"] {
+  width: auto;
+  border: 0;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-bottom-color: #ff2a2a;
+}
+
+button,
+.button {
+  display: inline;
+  border: 0;
+  background: none;
+  color: inherit;
+  cursor: pointer;
+  font: inherit;
+  font-weight: 400;
+  padding: 0;
+  text-decoration: underline;
+  text-decoration-color: #ff2a2a;
+  text-underline-offset: 3px;
+}
+
+button.primary,
+.button.primary {
+  background: none;
+  color: inherit;
+}
+
+button:disabled {
+  cursor: wait;
+  opacity: 0.55;
+}
+
+.stamp,
+.stamp-empty {
+  display: inline;
+  width: auto;
+  height: auto;
+  border: 0;
+  border-radius: 0;
+  padding: 0;
+  color: #ff2a2a;
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 600;
+  transform: none;
+  background: none;
+}
+
+.stamp-A,
+.stamp-B,
+.stamp-C,
+.stamp-D,
+.stamp-F {
+  color: #ff2a2a;
+}
+
+.signal {
+  display: inline;
+  border: 0;
+  padding: 0;
+  font-size: 1rem;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+
+.signal-overpriced {
+  color: #ff2a2a;
+}
+
+.signal-underpriced,
+.signal-fair,
+.signal-unpriced {
+  color: #f3f3f3;
+}
+
+.error {
+  border: 0;
+  background: none;
+  color: #ff2a2a;
+  padding: 0;
+}
+
+.nav a {
+  border: 0;
+  padding: 0;
+  text-decoration: underline;
+  text-decoration-color: #ff2a2a;
+  text-underline-offset: 3px;
+}
+
+.nav a.active {
+  font-weight: 600;
+}
+
+.bar {
+  height: 2px;
+  background: #2a2a2a;
+}
+
+.bar > span {
+  display: block;
+  height: 100%;
+  background: #ff2a2a;
+}
+
+label.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  font-size: 1rem;
+}
+
+label.field span {
+  color: #8d8d8d;
+  font-size: 1rem;
+  font-weight: 400;
+  letter-spacing: 0;
+}
