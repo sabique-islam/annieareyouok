@@ -1,0 +1,33 @@
+# Optional lab stack for machines that have Docker.
+# This workstation uses the local PostgreSQL 17 + MongoDB install instead.
+# Copy .env.example to .env.local first. Compose reads POSTGRES_PASSWORD from the shell
+# or from a file named .env (not .env.local).
+
+services:
+  postgres:
+    image: pgvector/pgvector:pg17
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:?set POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?set POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB:?set POSTGRES_DB}
+    ports:
+      - "5432:5432"
+    volumes:
+      - ucdi_pg:/var/lib/postgresql/data
+      - ./db/schema.sql:/docker-entrypoint-initdb.d/01-schema.sql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U \"$$POSTGRES_USER\" -d \"$$POSTGRES_DB\""]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+
+  mongo:
+    image: mongo:7
+    ports:
+      - "27017:27017"
+    volumes:
+      - ucdi_mongo:/data/db
+
+volumes:
+  ucdi_pg:
+  ucdi_mongo:
