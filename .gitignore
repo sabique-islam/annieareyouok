@@ -1,0 +1,8 @@
+node_modules
+db/.role.sql
+.next
+.env
+.env.local
+*.log
+.DS_Store
+tsconfig.tsbuildinfo
