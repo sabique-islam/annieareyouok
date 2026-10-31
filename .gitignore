@@ -6,3 +6,4 @@ db/.role.sql
 *.log
 .DS_Store
 tsconfig.tsbuildinfo
+docs/report/
